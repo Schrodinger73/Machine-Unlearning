@@ -527,8 +527,8 @@ print("Approx")
 # print("Unlearning")
 tm <- system.time(mmF <- mcmc_mala(Xr, Yr, Xe, Ye, n = 1e3, h = 1e-10))
 print("MALA")
-#1e-4
-tr <- system.time(mrF <- drawSamplesReal(1e3, h = 1e-6))
+#1e-1
+tr <- system.time(mrF <- drawSamplesReal(1e3, h = 1e-2))
 print("Real")
 ma <- maF$M
 #mn <- mnF$M
@@ -545,10 +545,9 @@ mrF$A
 
 gr$coefficients
 g$coefficients
-
-#b <- benchmark(mcmc_nuevo_approx(Xr, Yr, Xe, Ye, n = 1e2, h = 5e-4, k = 150), mcmc_mala(Xr, Yr, Xe, Ye, n = 1e2, h = 1e-10), drawSamplesReal(1e2, h = 1e-4), replications = 1)
-#b
-#kable(b, "latex")
+b <- benchmark(mcmc_nuevo_approx(Xr, Yr, Xe, Ye, n = 1e2, h = 5e-4, k = 150), mcmc_mala(Xr, Yr, Xe, Ye, n = 1e2, h = 1e-10), drawSamplesReal(1e2, h = 1e-4), replications = 1)
+b
+kable(b, "latex")
 
 rowMeans(ma)
 rowMeans(mm)
